@@ -8,6 +8,8 @@ import Nomatch from './components/shared/Nomatch';
 import FetchUser from './components/auth/FetchUser';
 import Cats from './components/cats/Cats';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import CatForm from './components/cats/CatForm';
+
 const App = () => (
   <>
     <MainNavbar />
@@ -17,6 +19,7 @@ const App = () => (
           <Route path='/' element={ <Home /> } />
           <Route path='/' element={ <ProtectedRoute />}>
             <Route path='/cats' element={ <Cats /> } />
+            <Route path='/cats/:catId/edit' element={ <CatForm /> } />
           </Route>
           <Route path='/login' element={ <Login /> } />
           <Route path='/register' element={ <Register /> } />
