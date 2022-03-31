@@ -8,6 +8,7 @@ import { initMiddleware } from 'devise-axios';
 import AuthProvider from './providers/AuthProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CatProvider from './providers/CatProvider';
+import NoteProvider from './providers/NoteProvider';
 
 initMiddleware()
 
@@ -16,7 +17,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <CatProvider>
-          <App />
+          <NoteProvider>
+            <App />
+          </NoteProvider>
         </CatProvider>
       </AuthProvider>
     </BrowserRouter>

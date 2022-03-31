@@ -9,6 +9,7 @@ import FetchUser from './components/auth/FetchUser';
 import Cats from './components/cats/Cats';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import CatForm from './components/cats/CatForm';
+import Notes from './components/notes/Notes';
 
 const App = () => (
   <>
@@ -20,6 +21,7 @@ const App = () => (
           <Route path='/' element={ <ProtectedRoute />}>
             <Route path='/cats' element={ <Cats /> } />
             <Route path='/cats/:catId/edit' element={ <CatForm /> } />
+            <Route path='/cats/:catId/notes' element={ <Notes /> } />
           </Route>
           <Route path='/login' element={ <Login /> } />
           <Route path='/register' element={ <Register /> } />
