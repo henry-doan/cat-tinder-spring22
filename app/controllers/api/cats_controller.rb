@@ -34,7 +34,7 @@ class Api::CatsController < ApplicationController
 
   def randomCats
     @cats = Cat.all - @current_user.cats
-    render json: @cats
+    render json: @cats.shuffle.first
   end
 
   def switchOwner

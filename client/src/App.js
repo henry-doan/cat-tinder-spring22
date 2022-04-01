@@ -10,6 +10,7 @@ import Cats from './components/cats/Cats';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import CatForm from './components/cats/CatForm';
 import Notes from './components/notes/Notes';
+import RandCats from './components/cats/RandCats';
 
 const App = () => (
   <>
@@ -20,6 +21,7 @@ const App = () => (
           <Route path='/' element={ <Home /> } />
           <Route path='/' element={ <ProtectedRoute />}>
             <Route path='/cats' element={ <Cats /> } />
+            <Route path='/randomCats' element={ <RandCats /> } />
             <Route path='/cats/:catId/edit' element={ <CatForm /> } />
             <Route path='/cats/:catId/notes' element={ <Notes /> } />
           </Route>

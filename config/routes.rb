@@ -6,13 +6,13 @@ Rails.application.routes.draw do
       resources :cats do
         put '/switchOwner', to: 'cats#switchOwner'
       end
+      get '/randomCats', to: 'cats#randomCats'
     end
 
     resources :cats , except: [:index, :show, :create, :destroy, :update] do
       resources :notes
     end
     
-    get '/cats/randomCats', to: 'cats#randomCats'
   end
   
 end
