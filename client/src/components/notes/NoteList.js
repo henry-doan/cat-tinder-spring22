@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { NoteConsumer } from "../../providers/NoteProvider";
 import { Row, Col, Modal, Button } from 'react-bootstrap';
+import Moment from 'react-moment';
+import NoteEdit from "./NoteEdit";
 
-const NoteList = ({ notes, getAllNotes }) => {
+const NoteList = ({ notes, getAllNotes, deleteNote }) => {
   const { catId } = useParams()
   const [show, setShow] = useState(false);
 
@@ -29,10 +31,16 @@ const NoteList = ({ notes, getAllNotes }) => {
               <Modal.Body>
                 <h1>Note Show</h1>
                 <p>
-                  Date: {n.note_date}
+                  Date: &nbsp;
+                  <Moment format="M/DD/YY">
+                    {n.note_date}
+                  </Moment> 
                 </p>
                 <p>
-                  Time: {n.note_time}
+                  Time: &nbsp; 
+                  <Moment format="h:mm a">
+                    {n.note_time}
+                  </Moment> 
                 </p>
                 <p>
                   Subject: {n.subject}
@@ -40,11 +48,17 @@ const NoteList = ({ notes, getAllNotes }) => {
                 <p>
                   Notes: {n.body}
                 </p>
-                <Button>Edit</Button>
-                <Button>Delete</Button>
+                <NoteEdit {...n} />
+                <Button onClick={() => {
+                  deleteNote(catId, n.id)
+                  setShow(false)
+                }}>
+                  Delete
+                </Button>
               </Modal.Body>
             </Modal>
           </Col>
+          <hr />
         </Row> 
       )}
     </>
