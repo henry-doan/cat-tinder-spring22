@@ -8,6 +8,7 @@ export const AuthConsumer = AuthContext.Consumer;
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate()
 
@@ -17,7 +18,10 @@ const AuthProvider = ({ children }) => {
         setUser(res.data.data)
         navigate('/')
       })
-      .catch( err => console.log(err))
+      .catch( err => {
+        console.log(err)
+        setErrors({ variant: 'danger', msg: err.response.data.errors.full_messages[0] })
+      })
   }
 
   const handleLogin = (user) => {
@@ -26,7 +30,10 @@ const AuthProvider = ({ children }) => {
         setUser(res.data.data)
         navigate('/')
       })
-      .catch( err => console.log(err))
+      .catch( err => {
+        console.log(err)
+        setErrors({ variant: 'danger', msg: err.response.data.errors[0] })
+      })
   }
 
   const handleLogout = () => {
@@ -53,6 +60,8 @@ const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{
       user,
+      errors,
+      setErrors,
       handleRegister,
       handleLogin,
       handleLogout,
