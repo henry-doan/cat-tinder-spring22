@@ -1,24 +1,25 @@
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { CatConsumer } from '../../providers/CatProvider';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 const CatForm = ({ addCat, setAdd, updateCat }) => {
   const [cat, setCat] = useState({ name: '', breed: '', registry: '', avatar: '' })
 
   const location = useLocation()
-  const { id, name, breed, registry, avatar } = location.state
-
+  const { catId } = useParams()
+  
   useEffect( () => {
-    if (id) {
+    if (catId) {
+      const { name, breed, registry, avatar } = location.state
       setCat({ name, breed, registry, avatar })
     }
   }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (id) {
-      updateCat(id, cat)
+    if (catId) {
+      updateCat(catId, cat)
     } else {
       addCat(cat)
       setAdd(false)
@@ -28,7 +29,7 @@ const CatForm = ({ addCat, setAdd, updateCat }) => {
 
   return (
     <>
-      <h1>{ id ? 'Update' : 'Create' } Cat</h1>
+      <h1>{ catId ? 'Update' : 'Create' } Cat</h1>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col>

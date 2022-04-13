@@ -2,6 +2,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import CatShow from './CatShow';
 import { CatConsumer } from '../../providers/CatProvider';
 import { useEffect } from 'react';
+import { MyCatHeader } from '../../styles/CatStyles';
+import { Rotate } from 'react-reveal';
 
 const CatList = ({ cats, getAllCats }) => {
   
@@ -11,15 +13,17 @@ const CatList = ({ cats, getAllCats }) => {
 
   return ( 
     <>
-      <h1>My Cats</h1>
+      <MyCatHeader>My Cats</MyCatHeader>
       <Container>
-        <Row md={4}>
+        <Row md={4} sm={12}>
           { cats.map( c => 
             <Col>
-              <CatShow 
-                key={c.id}
-                {...c}
-              />  
+              <Rotate top left>
+                <CatShow 
+                  key={c.id}
+                  {...c}
+                />  
+              </Rotate>
             </Col>
           )}
         </Row>

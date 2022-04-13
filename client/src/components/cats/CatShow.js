@@ -8,7 +8,7 @@ const CatShow = ({ id, name, breed, registry, avatar, deleteCat }) => {
 
   return (
     <>
-      <Card style={{ width: '14rem' }}>
+      <Card style={{ width: '15rem', margin: '0 auto' }}>
         <Card.Img variant="top" src={avatar} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
@@ -52,6 +52,8 @@ const CatShow = ({ id, name, breed, registry, avatar, deleteCat }) => {
           </Container>
         </Modal.Body>
       </Modal>
+      <br />
+      <br />
     </>
   )
 }

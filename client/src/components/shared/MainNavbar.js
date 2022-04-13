@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import { CatNavLink } from '../../styles/CatStyles';
 
 const MainNavbar = ({ user, handleLogout }) => {
   
@@ -10,20 +11,20 @@ const MainNavbar = ({ user, handleLogout }) => {
       return (
         <>
           <Nav.Link>
-            <Link to='/cats'>
+            <CatNavLink to='/cats'>
               Cats
-            </Link>
+            </CatNavLink>
           </Nav.Link>
           <Nav.Link>
-            <Link to='/randomCats'>
+            <CatNavLink to='/randomCats'>
               Random Cats
-            </Link>
+            </CatNavLink>
           </Nav.Link>
           <Nav.Link>
-            <Link to='/profile'>
+            <CatNavLink to='/profile'>
               Profile
               {/* <img src={user.image} /> */}
-            </Link>
+            </CatNavLink>
           </Nav.Link>
           <Nav.Link onClick={() => handleLogout()}>
             Logout
@@ -35,14 +36,14 @@ const MainNavbar = ({ user, handleLogout }) => {
       return (
         <>
           <Nav.Link>
-            <Link to='/login'>
+            <CatNavLink to='/login'>
               Login
-            </Link>
+            </CatNavLink>
           </Nav.Link>
           <Nav.Link>
-            <Link to='/register'>
+            <CatNavLink to='/register'>
               Sign Up
-            </Link>
+            </CatNavLink>
           </Nav.Link>
         </>
       )
@@ -53,7 +54,7 @@ const MainNavbar = ({ user, handleLogout }) => {
     <>
       <Navbar collapseOnSelect expand="lg">
         <Container>
-          <Link to='/'><Navbar.Brand>CatCafe</Navbar.Brand></Link>
+          <CatNavLink to='/'><Navbar.Brand>CatCafe</Navbar.Brand></CatNavLink>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
